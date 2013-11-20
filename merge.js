@@ -1,9 +1,6 @@
 // a function that takes 2 sorted arrays and returns one sorted array 
 // containing all members of the input arrays.
 
-var a = [1,2,3];
-var b = [2,3,4];
-
 var merge = function(a, b){
   var result = [];
   while((a.length > 0) || (b.length > 0)){
@@ -18,4 +15,9 @@ var merge = function(a, b){
   return result;
 };
 
-// TODO: allow merge to work with arrays of uneven length.
+// var a = [1,2,3];
+// var b = [2,3,4,99];
+// merge(a,b) will return [1,2,2,3,3,4,99]
+
+// works even when input arrays aren't the same length.
+// TODO: split up a mixed array into 2 sorted arrays to finish merge sort.
