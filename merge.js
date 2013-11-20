@@ -3,17 +3,31 @@
 
 var merge = function(a, b){
   var result = [];
-  while((a.length > 0) || (b.length > 0)){
-    if (a[0] <= b[0]){
-    //for (var i = 0; i < a.length; i++){
-    //result.push(a[i])
-      result.push(a.shift());
+  var aCopy = a.slice(0);
+  var bCopy = b.slice(0);
+  while((aCopy.length > 0) || (bCopy.length > 0)){
+    if (aCopy[0] <= bCopy[0]){
+      result.push(aCopy.shift());
     } else {
-      result.push(b.shift());
+      result.push(bCopy.shift());
     }
   }
   return result;
 };
+
+var mergeSort = function(a){
+  if ((a.length === 1) || (a.length === 0)){
+    return a;
+  } 
+  //console.log(a);
+  var pivot = parseInt(a.length/2, 10);
+  var rightHalf = mergeSort(a.slice(pivot)); // this will recurse until full sorted
+  var leftHalf = mergeSort(a.slice(0, pivot));
+
+  return merge(rightHalf, leftHalf); 
+};
+
+//console.log(mergeSort([4,1,2,3]));
 
 // var a = [1,2,3];
 // var b = [2,3,4,99];
